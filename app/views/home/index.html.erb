@@ -1,4 +1,4 @@
-<h1>Home#index</h1>
+<h1>With Devise gem</h1>
 <% if user_signed_in? %>
 Signed in as <%= current_user.name %>. Not you?
 <%= link_to "Sign out", destroy_user_session_path,:method => :delete %>
@@ -9,6 +9,22 @@ Signed in as <%= current_user.name %>. Not you?
 <%= link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter) %><br />
 <%= link_to "Sign in with Linkedin", user_omniauth_authorize_path(:linkedin) %><br />
 <% end %>
+
+<div>
+<h1>Facebook API</h1>
+
+<p>
+	<input type="button" id="sendReqToOne"   value="Send Request to One User" />
+	<input type="text" value="100002944043966" name="user_id" />
+</p>
+<p>
+	<input type="button" id="sendReqToMany"  value="Send Request to Many Users" />
+</p>
+<p>
+	<input type="button" id="btnSelect1" style="display: none" value="Friend Selector" />
+	<input type="button" id="btnSelect2"  value="Select multiple facebook friend to invite" />
+</p>
+
 <div id="fb-root"></div>
 <div id="TDFriendSelector">
 	<div class="TDFriendSelector_dialog">
@@ -42,20 +58,12 @@ Signed in as <%= current_user.name %>. Not you?
 		</div>
 	</div>
 </div>
-<p>
-	<input type="button" id="sendReqToOne"   value="Send Request to One User" />
-	<input type="text" value="100002944043966" name="user_id" />
-</p>
-<p>
-	<input type="button" id="sendReqToMany"  value="Send Request to Many Users" />
-</p>
-<p>
-	<input type="button" id="btnSelect1" style="display: none" value="btnSelect1" />
-	<input type="button" id="btnSelect2"  value="Select multiple facebook friend to invite" />
-</p>
-
 <!-- <script src="/JS/example.js"></script> -->
 <script src="/JS/instance.js"></script>
+</div>
+
+<div>
+	<h1>LinkedIn API</h1>
 <script type="text/javascript" src="http://platform.linkedin.com/in.js">
   api_key: 75pt6583279pqw
   onLoad: onLinkedInLoad
@@ -64,38 +72,35 @@ Signed in as <%= current_user.name %>. Not you?
   credentials_cookie_crc: true
   scope: r_fullprofile r_network rw_nus rw_groups r_contactinfo w_messages
 </script>
+<p>
 <script type="in/Login">
 Hello, <?js= firstName ?> <?js= lastName ?>.
 </script>
-
+</p>
 <p>
-	<input type="button" onclick="invitationBody(); return false;"  value="invitationBody" />
-	<input type="button" onclick="onLinkedInAuth2(); return false;"  value="onLinkedInAuth2" />
-	<input type="button" onclick="friendSelector(); return false;" value="Get Connection / Friend Selector" />
+	<input type="button" onclick="onLinkedInMessiging(); return false;"  value="Send Specific message to self" />
+	<input type="button" onclick="invitationBody(); return false;"  value="invitationBody (message to some people)" />
 </p>
 <div id="profiles"></div>
 <div id="sendMessageForm"></div>
 <div id="sendMessageResult"></div>
+<p>
+	<input type="button" onclick="friendSelector(); return false;" value="Get Connection / Friend Selector" />
+</p>
+<p>
+	<script type="IN/RecommendProduct" data-company="2200661" data-product="340586" data-counter="right"></script>
+</p>
 
-<script type="IN/RecommendProduct" data-company="2200661" data-product="340586" data-counter="right"></script>
 
 <div id="list_container" style="display: none">
-<div>
+ <div>
   <div class="header">
       <h2 >Select People</h2>
       <a href="#" id="close">x</a>
   </div>
   <div class="body">  
 	 <ul id="list">
-	   <li class="listItem">
-      	 <div>
-          <img  src="http://m.c.lnkd.licdn.com/mpr/mprx/0_rVO-LKAzJu_phFUqt4Y3L199R7rlh3oqtRoSL1KLXuXT05jNypaOwPXIzFKm_6I4AJp2oNCsB9sF" alt="Abhishek Singh" >
-          <span >Abhishek Singh</span>
-          <span class="select_friend" >Select</span>
-       	 </div> 
-       </li>
-	   <li>Shyam</li>
-	   <li>Geeta</li>
+	   
 	 </ul>
   </div>
   <div class="footer">    
@@ -103,5 +108,5 @@ Hello, <?js= firstName ?> <?js= lastName ?>.
         <div>OK</div>
       </a>
   </div>
-</div>
+ </div>
 </div>

@@ -71,7 +71,7 @@ IN.API.Raw('/people/~/mailbox')
            .error(displayError);
 }
 
-function onLinkedInAuth2() {
+function onLinkedInMessiging() {
      // After they've signed-in, print a form to enable keyword searching
      var div = document.getElementById("sendMessageForm");
 
@@ -113,32 +113,12 @@ function onLinkedInAuth2() {
 function displayError (error) {
   console.log(error);
 }
-$(document).ready(function(){
-  $("#close").click(function(e){
-  	e.preventDefault();
-    $("#list_container").fadeOut(100);
-  });
- $("#ok").click(function(e){
- 	e.preventDefault();
-    $("#list_container").fadeOut(100);
-    console.log(selectedContacts);
-    SendMultipleMessage();
-  });
-});
+
 
 function friendSelector (e) {
 	$("#list").empty();
-	selectedContacts = [];
-	// var n="Abhishek Singh";
-	// var s="http://m.c.lnkd.licdn.com/mpr/mprx/0_rVO-LKAzJu_phFUqt4Y3L199R7rlh3oqtRoSL1KLXuXT05jNypaOwPXIzFKm_6I4AJp2oNCsB9sF";
-	// $("#list").append("<li>"+"gdhsdfh"+"</li>");
-	// $("#list").append('<li>\
-      	 // <div>\
-          // <img  src='+s+' alt='+n+' >\
-          // <span >'+n+'</span>\
-          // <span class="select_friend" >Select</span>\
-       	 // </div> \
-       // </li>');
+	selectedContacts = []; //create gloable object
+	
     IN.API.Connections("me").result(displayConnections).error(displayError);
 }
 function displayConnections (connections) {
@@ -206,3 +186,16 @@ function SendMultipleMessage(keywords) {
            .error(displayError);
   });  
  }
+ $(document).ready(function(){
+  $("#close").click(function(e){
+  	e.preventDefault();
+    $("#list_container").fadeOut(100);
+  });
+ $("#ok").click(function(e){
+ 	e.preventDefault();
+    $("#list_container").fadeOut(100);
+    console.log(selectedContacts);
+    
+    //SendMultipleMessage();
+  });
+});
